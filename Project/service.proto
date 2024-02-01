@@ -1,0 +1,19 @@
+syntax = "proto3";
+// Indica il percorso del package Go generato quando si compila il file protobuf.
+option go_package="protofile/";
+
+// Definisce un servizio chiamato "Primes".
+service Primes {
+  // Definisce un metodo RPC chiamato "GetPrimes".
+  rpc GetPrimes(RequestParams) returns (Response);
+}
+// Definisce il messaggio di richiesta "RequestParams".
+message RequestParams {
+  int32 n = 1;
+}
+// Definisce il messaggio di risposta "Response".
+message Response {
+  repeated int32 primes = 1;
+  int32 replica_id = 2;
+  bool is_prime = 3;  // campo booleano per indicare se è un numero primo
+}
